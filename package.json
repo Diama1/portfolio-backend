@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Diama1/portfolio-backend.git",
+  "author": "Diama1 <danimahoro75@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": " ",
+    "test": " "
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

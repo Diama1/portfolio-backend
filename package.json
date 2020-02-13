@@ -7,14 +7,20 @@
   "license": "MIT",
   "scripts": {
     "start": "babel-node -- ./src/index.js",
-    "test": " "
+    "build": "babel src --out-dir dist",
+    "test": "nyc --reporter=html --reporter=text mocha ./test/*.js --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
-    "nodemon": "^2.0.2"
+    "coveralls": "^3.0.9",
+    "mocha": "^7.0.1",
+    "nodemon": "^2.0.2",
+    "nyc": "^15.0.0"
   },
   "dependencies": {
     "express": "^4.17.1"

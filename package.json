@@ -6,10 +6,17 @@
   "author": "Diama1 <danimahoro75@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": " ",
+    "start": "babel-node -- ./src/index.js",
     "test": " "
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

@@ -9,7 +9,7 @@
     "start:dev": "nodemon --exec babel-node src/index.js",
     "build": "babel src --out-dir dist",
     "server": "node dist/index.js",
-    "test": "nyc --reporter=html --reporter=text mocha ./test/*.js --exit",
+    "test": "nyc --reporter=html --reporter=text mocha ./test/*.js --exit --require @babel/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "devDependencies": {
@@ -17,6 +17,8 @@
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "coveralls": "^3.0.9",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -26,6 +28,7 @@
     "nyc": "^15.0.0"
   },
   "dependencies": {
+    "@babel/register": "^7.8.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^7.18.1",

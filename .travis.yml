@@ -1,9 +1,20 @@
 language: node_js
 node_js:
   - 'stable'
+services:
+  - postgresql
 cache:
   directories:
     - "node_modules"
+
+env:
+  global:
+    - NODE_ENV=test
+  
+before_script:
+  - psql -c 'create database portfolio_test;' -U postgres
+  - yarn add sequelize-cli
+  - yarn run build
 script:
   - yarn test
 before_install:

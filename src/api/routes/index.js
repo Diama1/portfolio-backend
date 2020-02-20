@@ -1,7 +1,8 @@
 import express from 'express';
+import serviceRouter from '../services';
 
 const api = express();
 
-api.get('/', (req, res) => res.json({ status: 200, message: 'Welcome To Portfolio' }));
+api.use('/service', serviceRouter);
 
 export default api;

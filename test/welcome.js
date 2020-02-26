@@ -9,7 +9,7 @@ const { expect } = chai;
 describe('Welcome', () => {
   it('should give welcome ', (done) => {
     chai.request(server)
-      .get('/api/')
+      .get('/')
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body.message).to.be.a('string');

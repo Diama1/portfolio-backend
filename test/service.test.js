@@ -15,7 +15,7 @@ const serviceMock = {
 
 chai.use(chaiHttp);
 const { expect } = chai;
-describe('Create Service', () => {
+describe('Service', () => {
   it('should create the service', (done) => {
     chai.request(server)
       .post('/api/service')
@@ -23,6 +23,17 @@ describe('Create Service', () => {
       .end((err, res) => {
         expect(res).to.have.status(201);
         expect(res.body.message).to.be.a('string');
+        done();
+      });
+  });
+
+  it('should get all services in the db', (done) => {
+    chai.request(server)
+      .get('/api/service')
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res).to.have.status(200);
+        expect(res.body.services).to.be.an('array');
         done();
       });
   });

@@ -37,5 +37,19 @@ class Services {
       });
     }
   }
+
+  /**
+   *
+   * @param {Object} req - Request object
+   * @param {Object} res - Response object
+   * @returns {Object} - Response object
+   */
+  static async getAllServices(req, res) {
+    const allServices = await Service.findAll();
+    if (!allServices[0]) return res.status(200).send({ message: 'Whoops! No Service found!' });
+    res.status(200).send({
+      services: allServices
+    });
+  }
 }
 export default Services;

@@ -1,5 +1,5 @@
 import express from 'express';
-import serviceRouter from '../services';
+import serviceRouter from './services';
 
 const api = express();
 

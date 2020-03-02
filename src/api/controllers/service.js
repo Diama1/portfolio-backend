@@ -51,5 +51,52 @@ class Services {
       services: allServices
     });
   }
+
+  /**
+   *
+   * @param {Object} req - Request object
+   * @param {Object} res - Response object
+   * @returns {Object} - Response object
+   */
+  static async updateService(req, res) {
+    const { id } = req.params;
+    const { title, description, image } = req.body;
+    const data = {
+      title, description, image
+    };
+
+    const response = await Service.findAll({
+      where: { id }
+    });
+    if (response) {
+      await Service.update(
+        { title: data.title, description: data.description, image: data.image },
+        { where: { id }, logging: false }
+      );
+      res.status(200).json({
+        NewService: data,
+        message: 'updated',
+      });
+    }
+  }
+
+  /**
+   *
+   * @param {Object} req - Request object
+   * @param {Object} res - Response object
+   * @returns {Object} - Response object
+   */
+  static async deleteService(req, res) {
+    const { id } = req.params;
+
+    await Service.destroy({
+      where: {
+        id
+      }
+    });
+    res.status(200).json({
+      message: 'the service has been deleted successfully'
+    });
+  }
 }
 export default Services;

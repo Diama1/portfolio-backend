@@ -23,7 +23,7 @@ config.test = {
 };
 
 config.production = {
-  dbUrl: process.env.PROD_DATABASE_URL,
+  use_env_variable: 'DATABASE_URL'
 };
 
 module.exports = config;

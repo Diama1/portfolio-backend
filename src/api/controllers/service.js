@@ -1,3 +1,4 @@
+import cloudinary from 'cloudinary';
 import db from '../../sequelize/models';
 
 const { Service } = db;
@@ -15,9 +16,15 @@ class Services {
    * @returns {Object} - Response object
    */
   static async createService(req, res) {
-    const { title, description, image } = req.body;
+    let uploadedImage;
+    const { title, description } = req.body;
+
+    if (req.file) {
+      const image = await cloudinary.v2.uploader.upload(req.file.path);
+      uploadedImage = image.secure_url;
+    }
     const data = {
-      title, description, image
+      title, description, uploadedImage
     };
     const response = await Service.findAll({
       where: {
@@ -29,7 +36,7 @@ class Services {
       const newService = await Service.create({
         title: data.title,
         description: data.description,
-        image: data.image
+        image: data.uploadedImage
       });
       return res.status(201).json({
         data: newService,
